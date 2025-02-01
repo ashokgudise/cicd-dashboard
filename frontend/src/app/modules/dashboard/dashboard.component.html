@@ -1,0 +1,23 @@
+<div>
+    <h1>DevOps Dashboard</h1>
+    <div>
+      <label>Namespace:</label>
+      <input [(ngModel)]="namespace" placeholder="Enter namespace" />
+    </div>
+    <div>
+      <label>Service Account:</label>
+      <input [(ngModel)]="serviceAccount" placeholder="Enter service account" />
+    </div>
+    <button (click)="verify()">Verify</button>
+  
+    <div *ngIf="results">
+      <h2>Verification Results</h2>
+      <app-status-light [status]="results.access.status" [message]="results.access.message"></app-status-light>
+      <app-status-light [status]="results.namespace_exists.status" [message]="results.namespace_exists.message"></app-status-light>
+      <app-status-light [status]="results.vault_integration.status" [message]="results.vault_integration.message"></app-status-light>
+      <app-status-light [status]="results.ingress.status" [message]="results.ingress.message"></app-status-light>
+      <app-status-light [status]="results.app_ports.status" [message]="results.app_ports.message"></app-status-light>
+      <app-status-light [status]="results.pod_capacity.status" [message]="results.pod_capacity.message"></app-status-light>
+      <app-status-light [status]="results.meta_tags.status" [message]="results.meta_tags.message"></app-status-light>
+    </div>
+  </div>

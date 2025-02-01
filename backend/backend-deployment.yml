@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-dashboard-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devops-dashboard
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: devops-dashboard
+        tier: backend
+    spec:
+      serviceAccountName: dashboard-backend-sa
+      containers:
+      - name: backend
+        image: devops-dashboard-backend:latest
+        ports:
+        - containerPort: 5000
